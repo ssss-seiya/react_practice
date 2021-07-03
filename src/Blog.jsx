@@ -25,6 +25,10 @@ class Blog extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    document.getElementById('counter').removeEventListener('click', this.countUp)
+  }
+
   // 公開状態を反転させる関数を定義する
   togglePublished = () => {
     this.setState({
