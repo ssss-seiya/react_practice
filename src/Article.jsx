@@ -2,20 +2,22 @@ import React from 'react';
 
 const Article = (props) => {
 
-  let PublishState = '';
-  if (props.isPublished) {
-    PublishState = '公開'
-  } else {
-    PublishState = '非公開'
-  }
   return (
     <div>
       <h2>{props.title}</h2>
-      <p>順番は{props.order}です</p>
-      <p>著書：{props.author}</p>
-      <p>{PublishState}</p>
+      <label htmlFor='check'>公開状態:</label>
+      <input
+        type='checkbox'
+        checked={props.isPublished}
+        id='check'
+        onClick={() => props.toggle()}
+      />
+      <br/>
+      <p>{props.order}</p>
+      <button onClick={() => props.countup()}>カウントアップ</button>
+      <button onClick={() => props.reset()}>リセット</button>
     </div>
   )
 };
 
-export default Article
+export default Article;
