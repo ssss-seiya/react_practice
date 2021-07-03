@@ -1,4 +1,5 @@
 import React from 'react';
+import LikeButton from './LikeButton';
 
 const Article = (props) => {
 
@@ -16,6 +17,8 @@ const Article = (props) => {
       <p>{props.order}</p>
       <button onClick={() => props.countup()}>カウントアップ</button>
       <button onClick={() => props.reset()}>リセット</button>
+      <br />
+      <LikeButton count={props.count}/>
     </div>
   )
 };

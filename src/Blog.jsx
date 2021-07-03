@@ -6,9 +6,15 @@ class Blog extends React.Component {
     super(props); // これを記述するとクラス内でthis.propsを使える
     this.state = {
       isPublished: false,
-      order: 0
+      order: 0,
+      count: 0
     }
   }
+
+  componentDidMount() {
+    // ボタンがクリックされたらいいねをカウントアップする
+    document.getElementById('counter').addEventListener('click', this.countUp)
+  };
 
   // 公開状態を反転させる関数を定義する
   togglePublished = () => {
@@ -29,7 +35,13 @@ class Blog extends React.Component {
     this.setState({
       order: 0
     })
-  }
+  };
+
+  countUp = () => {
+    this.setState({
+      count: this.state.count + 1
+    })
+  };
 
   render() {
     return(
@@ -41,6 +53,7 @@ class Blog extends React.Component {
           order={this.state.order}
           countup={() => this.countUpOrder()}
           reset={() => this.resetOrder()}
+          count={this.state.count}
         />
       </>
     )
