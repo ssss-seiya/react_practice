@@ -5,7 +5,8 @@ class Blog extends React.Component {
   constructor(props) {
     super(props); // これを記述するとクラス内でthis.propsを使える
     this.state = {
-      isPublished: false
+      isPublished: false,
+      order: 0
     }
   }
 
@@ -16,6 +17,20 @@ class Blog extends React.Component {
     })
   };
 
+  // カウントアップさせる関数を定義する
+  countUpOrder = () => {
+    this.setState({
+      order: this.state.order + 1
+    })
+  };
+
+  // カウントをリセットする関数を定義する
+  resetOrder = () => {
+    this.setState({
+      order: 0
+    })
+  }
+
   render() {
     return(
       <>
@@ -23,6 +38,9 @@ class Blog extends React.Component {
           title={'Reactの使い方'}
           isPublished={this.state.isPublished}
           toggle={() => this.togglePublished()}
+          order={this.state.order}
+          countup={() => this.countUpOrder()}
+          reset={() => this.resetOrder()}
         />
       </>
     )

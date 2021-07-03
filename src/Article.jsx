@@ -12,6 +12,10 @@ const Article = (props) => {
         id='check'
         onClick={() => props.toggle()}
       />
+      <br/>
+      <p>{props.order}</p>
+      <button onClick={() => props.countup()}>カウントアップ</button>
+      <button onClick={() => props.reset()}>リセット</button>
     </div>
   )
 };
