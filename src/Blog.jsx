@@ -11,10 +11,19 @@ class Blog extends React.Component {
     }
   }
 
+  // ボタンがクリックされたらいいねをカウントアップする
   componentDidMount() {
-    // ボタンがクリックされたらいいねをカウントアップする
     document.getElementById('counter').addEventListener('click', this.countUp)
   };
+
+  // いいね数が10以上だとカウントをリセットする
+  componentDidUpdate() {
+    if (this.state.count >= 10) {
+      this.setState({
+        count: 0
+      })
+    }
+  }
 
   // 公開状態を反転させる関数を定義する
   togglePublished = () => {
