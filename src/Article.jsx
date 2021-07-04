@@ -1,7 +1,9 @@
-import React from 'react';
-import LikeButton from './LikeButton';
+import React, {useState} from 'react';
+// import LikeButton from './LikeButton';
 
 const Article = (props) => {
+  const [isPublished, togglePublished] = useState(false);
+  const [isCount, countButton] = useState(0);
 
   return (
     <div>
@@ -9,16 +11,16 @@ const Article = (props) => {
       <label htmlFor='check'>公開状態:</label>
       <input
         type='checkbox'
-        checked={props.isPublished}
+        checked={isPublished}
         id='check'
-        onClick={() => props.toggle()}
+        onClick={() => togglePublished(!isPublished)}
       />
       <br/>
-      <p>{props.order}</p>
-      <button onClick={() => props.countup()}>カウントアップ</button>
-      <button onClick={() => props.reset()}>リセット</button>
-      <br />
-      <LikeButton count={props.count}/>
+      <p>{isCount}</p>
+      <button onClick={() => countButton(isCount + 1)}>カウントアップ</button>
+      <button onClick={() => countButton(0)}>リセット</button>
+      {/* <br />
+      <LikeButton count={props.count}/> */}
     </div>
   )
 };
