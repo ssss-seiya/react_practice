@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-// import LikeButton from './LikeButton';
+import React, {useEffect, useState} from 'react';
+import LikeButton from './LikeButton';
 
 const Article = (props) => {
   const [isPublished, togglePublished] = useState(false);
@@ -19,8 +19,8 @@ const Article = (props) => {
       <p>{isCount}</p>
       <button onClick={() => countButton(isCount + 1)}>カウントアップ</button>
       <button onClick={() => countButton(0)}>リセット</button>
-      {/* <br />
-      <LikeButton count={props.count}/> */}
+      <br />
+      <LikeButton />
     </div>
   )
 };
